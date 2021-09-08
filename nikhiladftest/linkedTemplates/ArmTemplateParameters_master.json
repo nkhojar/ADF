@@ -1,0 +1,77 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "nikhiladftest"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage2_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDatabricksDeltaLake1_accessToken": {
+			"value": ""
+		},
+		"AzureDatabricksDeltaLake2_accessToken": {
+			"value": ""
+		},
+		"AzureMySql1_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"value": ""
+		},
+		"AzureTableStorage1_connectionString": {
+			"value": ""
+		},
+		"CosmosDbMongoDbApi1_connectionString": {
+			"value": ""
+		},
+		"linkedService1_password": {
+			"value": ""
+		},
+		"secondstorage_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://nikhildemo1.dfs.core.windows.net"
+		},
+		"CosmosDbMongoDbApi1_properties_typeProperties_database": {
+			"value": "mongoapidatabase"
+		},
+		"linkedService1_properties_typeProperties_host": {
+			"value": "\\\\nikhildemo1.file.core.windows.net\\demofileshare"
+		},
+		"linkedService1_properties_typeProperties_userId": {
+			"value": "Azure\\nikhildemo1"
+		},
+		"Trigger_puo_properties_CopyPipeline_default_parameters_windowStart": {
+			"value": "@{addhours(trigger().scheduledTime, -24)}"
+		},
+		"Trigger_puo_properties_CopyPipeline_default_parameters_windowEnd": {
+			"value": "@trigger().scheduledTime"
+		},
+		"AzureBlobStorage1_properties_privateLinkResourceId": {
+			"value": "/subscriptions/5c13d1ec-c5e1-4e05-9a4e-513e8105a90b/resourceGroups/imemyself/providers/Microsoft.Storage/storageAccounts/nikhildemo1"
+		},
+		"AzureBlobStorage1_properties_groupId": {
+			"value": "blob"
+		},
+		"AzureBlobStorage1_properties_fqdns": {
+			"value": [
+				"nikhildemo1.blob.core.windows.net"
+			]
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
