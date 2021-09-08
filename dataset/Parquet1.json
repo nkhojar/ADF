@@ -1,0 +1,196 @@
+{
+	"name": "Parquet1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "secondstorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Prep_RetailSite.parquet",
+				"container": "secondcontainer"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "MDM_SITE_ID",
+				"type": "UTF8"
+			},
+			{
+				"name": "GLOBAL_SITE_ID",
+				"type": "UTF8"
+			},
+			{
+				"name": "SITE_NAME",
+				"type": "UTF8"
+			},
+			{
+				"name": "SITE_SHORT_NAME",
+				"type": "UTF8"
+			},
+			{
+				"name": "LONGITUDE",
+				"type": "UTF8"
+			},
+			{
+				"name": "LATITUDE",
+				"type": "UTF8"
+			},
+			{
+				"name": "SITE_OPENING_DATE",
+				"type": "UTF8"
+			},
+			{
+				"name": "SITE_CLOSING_DATE",
+				"type": "UTF8"
+			},
+			{
+				"name": "SITE_FRONTAGE",
+				"type": "INT32"
+			},
+			{
+				"name": "SITE_DEPTH",
+				"type": "INT32"
+			},
+			{
+				"name": "SITE_SIZE_AREA",
+				"type": "INT32"
+			},
+			{
+				"name": "SHOP_BUILDING_SIZE",
+				"type": "INT32"
+			},
+			{
+				"name": "SHOP_SELLING_SPACE_SIZE",
+				"type": "INT32"
+			},
+			{
+				"name": "CITY_NAME",
+				"type": "UTF8"
+			},
+			{
+				"name": "STREET_ADDRESS",
+				"type": "UTF8"
+			},
+			{
+				"name": "POSTAL_CODE",
+				"type": "UTF8"
+			},
+			{
+				"name": "FAX_NUMBER",
+				"type": "UTF8"
+			},
+			{
+				"name": "TELEPHONE_NUMBER",
+				"type": "UTF8"
+			},
+			{
+				"name": "OPERATOR_MASTER_EMAIL_ADDRESS",
+				"type": "UTF8"
+			},
+			{
+				"name": "BUSINESS_CUSTOMER_NUMBER",
+				"type": "UTF8"
+			},
+			{
+				"name": "BUSINESS_CUSTOMER_NAME",
+				"type": "UTF8"
+			},
+			{
+				"name": "BUSINESS_CUSTOMER_CITY_NAME",
+				"type": "UTF8"
+			},
+			{
+				"name": "BUSINESS_CUSTOMER_COUNTRY_CODE",
+				"type": "UTF8"
+			},
+			{
+				"name": "BUSINESS_CUSTOMER_TERRITORY_CODE",
+				"type": "UTF8"
+			},
+			{
+				"name": "BUSINESS_CUSTOMER_STREET_ADDRESS",
+				"type": "UTF8"
+			},
+			{
+				"name": "BUSINESS_CUSTOMER_POSTAL_CODE",
+				"type": "UTF8"
+			},
+			{
+				"name": "BUSINESS_CUSTOMER_LANGUAGE",
+				"type": "UTF8"
+			},
+			{
+				"name": "BUSINESS_CUSTOMER_START_DATE",
+				"type": "UTF8"
+			},
+			{
+				"name": "BUSINESS_CUSTOMER_END_DATE",
+				"type": "UTF8"
+			},
+			{
+				"name": "FACILITY_TYPE_CODE",
+				"type": "UTF8"
+			},
+			{
+				"name": "OPENING_HOURS_ID",
+				"type": "DECIMAL",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "FROM_DAY_OF_WEEK_CODE",
+				"type": "UTF8"
+			},
+			{
+				"name": "TO_DAY_OF_WEEK_CODE",
+				"type": "UTF8"
+			},
+			{
+				"name": "OPENING_FROM_DATETIME",
+				"type": "UTF8"
+			},
+			{
+				"name": "OPENING_TO_DATETIME",
+				"type": "UTF8"
+			},
+			{
+				"name": "LEGACY_SITE_ID",
+				"type": "UTF8"
+			},
+			{
+				"name": "LEGACY_SITE_TYPE_CODE",
+				"type": "UTF8"
+			},
+			{
+				"name": "CURRENCY_ISO_CODE",
+				"type": "UTF8"
+			},
+			{
+				"name": "CURRENCY_NAME",
+				"type": "UTF8"
+			},
+			{
+				"name": "START_DATE",
+				"type": "UTF8"
+			},
+			{
+				"name": "END_DATE",
+				"type": "UTF8"
+			},
+			{
+				"name": "RETAIL_SITE_TYPE_CODE",
+				"type": "UTF8"
+			},
+			{
+				"name": "RETAIL_SITE_TYPE_NAME",
+				"type": "UTF8"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

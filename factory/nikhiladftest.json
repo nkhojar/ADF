@@ -1,0 +1,9 @@
+{
+	"name": "nikhiladftest",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "018cc75b-1a4f-433b-a9e2-d8ae4de001a4",
+		"tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"name": "linkedService1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureFileStorage",
+		"typeProperties": {
+			"host": "\\\\nikhildemo1.file.core.windows.net\\demofileshare",
+			"userId": "Azure\\nikhildemo1",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIk5JS0hJTEFERlRFU1RfNDBjZTQ5MmEtOGIyNC00MmY0LWIyYTctN2MyMjUwYTcwMmNjIg0KfQ=="
+		}
+	}
+}
