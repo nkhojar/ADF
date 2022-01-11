@@ -1,0 +1,6 @@
+{
+	"name": "TempSHIR",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
