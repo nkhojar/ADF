@@ -32,6 +32,16 @@
 				}
 			}
 		],
+		"parameters": {
+			"FolderPath": {
+				"type": "string",
+				"defaultValue": "\"kantar/archive\""
+			},
+			"FileName": {
+				"type": "string",
+				"defaultValue": "\"*.CSV\""
+			}
+		},
 		"annotations": [],
 		"lastPublishTime": "2021-07-07T05:32:54Z"
 	},
