@@ -1,0 +1,27 @@
+{
+	"name": "nikhilgen2nikhilgen2filesysteminput",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "nikhilgen2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "test.xlsx",
+				"folderPath": "Input",
+				"fileSystem": "nikhilgen2filesystem"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			}
+		]
+	}
+}
