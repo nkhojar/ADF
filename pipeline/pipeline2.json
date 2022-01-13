@@ -13,7 +13,16 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
+				"userProperties": [
+					{
+						"name": "FolderPath",
+						"value": "kantar/archive"
+					},
+					{
+						"name": "FileName",
+						"value": "*.CSV"
+					}
+				],
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "DelimitedText1",
@@ -32,16 +41,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"FolderPath": {
-				"type": "string",
-				"defaultValue": "\"kantar/archive\""
-			},
-			"FileName": {
-				"type": "string",
-				"defaultValue": "\"*.CSV\""
-			}
-		},
 		"annotations": [],
 		"lastPublishTime": "2021-07-07T05:32:54Z"
 	},
