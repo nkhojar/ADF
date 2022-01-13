@@ -5,9 +5,6 @@
 		"factoryName": {
 			"value": "nikhiladftest"
 		},
-		"AzureBlobStorage1_connectionString": {
-			"value": ""
-		},
 		"AzureBlobStorage2_connectionString": {
 			"value": ""
 		},
@@ -32,14 +29,29 @@
 		"CosmosDbMongoDbApi1_connectionString": {
 			"value": ""
 		},
+		"coolblobstorage_connectionString": {
+			"value": ""
+		},
 		"linkedService1_password": {
+			"value": ""
+		},
+		"nikhilcoolblob_connectionString": {
+			"value": ""
+		},
+		"nikhilgen2_accountKey": {
 			"value": ""
 		},
 		"secondstorage_connectionString": {
 			"value": ""
 		},
+		"AzureBlobStorage1_properties_typeProperties_serviceEndpoint": {
+			"value": "https://nikhilgen2.blob.core.windows.net"
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://nikhildemo1.dfs.core.windows.net"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"value": "https://nikhilgen2.dfs.core.windows.net"
 		},
 		"CosmosDbMongoDbApi1_properties_typeProperties_database": {
 			"value": "mongoapidatabase"
@@ -49,6 +61,9 @@
 		},
 		"linkedService1_properties_typeProperties_userId": {
 			"value": "Azure\\nikhildemo1"
+		},
+		"nikhilgen2_properties_typeProperties_url": {
+			"value": "https://nikhilgen2.dfs.core.windows.net"
 		},
 		"Trigger_puo_properties_CopyPipeline_default_parameters_windowStart": {
 			"value": "@{addhours(trigger().scheduledTime, -24)}"

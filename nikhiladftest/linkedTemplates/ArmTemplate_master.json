@@ -7,10 +7,6 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "nikhiladftest"
 		},
-		"AzureBlobStorage1_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
-		},
 		"AzureBlobStorage2_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage2'"
@@ -43,17 +39,37 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'CosmosDbMongoDbApi1'"
 		},
+		"coolblobstorage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'coolblobstorage'"
+		},
 		"linkedService1_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'linkedService1'"
+		},
+		"nikhilcoolblob_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'nikhilcoolblob'"
+		},
+		"nikhilgen2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'nikhilgen2'"
 		},
 		"secondstorage_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'secondstorage'"
 		},
+		"AzureBlobStorage1_properties_typeProperties_serviceEndpoint": {
+			"type": "string",
+			"defaultValue": "https://nikhilgen2.blob.core.windows.net"
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://nikhildemo1.dfs.core.windows.net"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://nikhilgen2.dfs.core.windows.net"
 		},
 		"CosmosDbMongoDbApi1_properties_typeProperties_database": {
 			"type": "string",
@@ -66,6 +82,10 @@
 		"linkedService1_properties_typeProperties_userId": {
 			"type": "string",
 			"defaultValue": "Azure\\nikhildemo1"
+		},
+		"nikhilgen2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://nikhilgen2.dfs.core.windows.net"
 		},
 		"Trigger_puo_properties_CopyPipeline_default_parameters_windowStart": {
 			"type": "string",
@@ -116,9 +136,6 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"AzureBlobStorage1_connectionString": {
-						"value": "[parameters('AzureBlobStorage1_connectionString')]"
-					},
 					"AzureBlobStorage2_connectionString": {
 						"value": "[parameters('AzureBlobStorage2_connectionString')]"
 					},
@@ -143,14 +160,29 @@
 					"CosmosDbMongoDbApi1_connectionString": {
 						"value": "[parameters('CosmosDbMongoDbApi1_connectionString')]"
 					},
+					"coolblobstorage_connectionString": {
+						"value": "[parameters('coolblobstorage_connectionString')]"
+					},
 					"linkedService1_password": {
 						"value": "[parameters('linkedService1_password')]"
+					},
+					"nikhilcoolblob_connectionString": {
+						"value": "[parameters('nikhilcoolblob_connectionString')]"
+					},
+					"nikhilgen2_accountKey": {
+						"value": "[parameters('nikhilgen2_accountKey')]"
 					},
 					"secondstorage_connectionString": {
 						"value": "[parameters('secondstorage_connectionString')]"
 					},
+					"AzureBlobStorage1_properties_typeProperties_serviceEndpoint": {
+						"value": "[parameters('AzureBlobStorage1_properties_typeProperties_serviceEndpoint')]"
+					},
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorage2_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage2_properties_typeProperties_url')]"
 					},
 					"CosmosDbMongoDbApi1_properties_typeProperties_database": {
 						"value": "[parameters('CosmosDbMongoDbApi1_properties_typeProperties_database')]"
@@ -160,6 +192,9 @@
 					},
 					"linkedService1_properties_typeProperties_userId": {
 						"value": "[parameters('linkedService1_properties_typeProperties_userId')]"
+					},
+					"nikhilgen2_properties_typeProperties_url": {
+						"value": "[parameters('nikhilgen2_properties_typeProperties_url')]"
 					}
 				}
 			},
@@ -187,6 +222,26 @@
 					},
 					"AzureBlobStorage1_properties_fqdns": {
 						"value": "[parameters('AzureBlobStorage1_properties_fqdns')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'nikhiladftest_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "nikhiladftest_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
 					},
 					"Trigger_puo_properties_CopyPipeline_default_parameters_windowStart": {
 						"value": "[parameters('Trigger_puo_properties_CopyPipeline_default_parameters_windowStart')]"
@@ -197,7 +252,7 @@
 				}
 			},
 			"dependsOn": [
-				"[resourceId('Microsoft.Resources/deployments', 'nikhiladftest_ArmTemplate_0')]"
+				"[resourceId('Microsoft.Resources/deployments', 'nikhiladftest_ArmTemplate_1')]"
 			]
 		}
 	]

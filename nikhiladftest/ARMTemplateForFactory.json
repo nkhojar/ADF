@@ -7,10 +7,6 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "nikhiladftest"
 		},
-		"AzureBlobStorage1_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
-		},
 		"AzureBlobStorage2_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage2'"
@@ -43,17 +39,37 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'CosmosDbMongoDbApi1'"
 		},
+		"coolblobstorage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'coolblobstorage'"
+		},
 		"linkedService1_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'linkedService1'"
+		},
+		"nikhilcoolblob_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'nikhilcoolblob'"
+		},
+		"nikhilgen2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'nikhilgen2'"
 		},
 		"secondstorage_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'secondstorage'"
 		},
+		"AzureBlobStorage1_properties_typeProperties_serviceEndpoint": {
+			"type": "string",
+			"defaultValue": "https://nikhilgen2.blob.core.windows.net"
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://nikhildemo1.dfs.core.windows.net"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://nikhilgen2.dfs.core.windows.net"
 		},
 		"CosmosDbMongoDbApi1_properties_typeProperties_database": {
 			"type": "string",
@@ -66,6 +82,10 @@
 		"linkedService1_properties_typeProperties_userId": {
 			"type": "string",
 			"defaultValue": "Azure\\nikhildemo1"
+		},
+		"nikhilgen2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://nikhilgen2.dfs.core.windows.net"
 		},
 		"Trigger_puo_properties_CopyPipeline_default_parameters_windowStart": {
 			"type": "string",
@@ -161,6 +181,10 @@
 						]
 					}
 				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
 				"parameters": {
 					"windowStart": {
 						"type": "String"
@@ -241,6 +265,10 @@
 						]
 					}
 				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
 				"annotations": [],
 				"lastPublishTime": "2021-06-30T06:35:59Z"
 			},
@@ -352,6 +380,10 @@
 						]
 					}
 				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
 				"annotations": [],
 				"lastPublishTime": "2021-07-07T05:32:54Z"
 			},
@@ -382,8 +414,15 @@
 						"userProperties": [],
 						"typeProperties": {
 							"source": {
-								"type": "AzureMySqlSource",
-								"queryTimeout": "02:00:00"
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
 							},
 							"sink": {
 								"type": "DelimitedTextSink",
@@ -408,25 +447,29 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "AzureMySqlTable1",
+								"referenceName": "nikhilgen2nikhilgen2filesysteminput",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "DelimitedText2",
+								"referenceName": "nikhilcoolblob",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						]
 					}
 				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/AzureMySqlTable1')]",
-				"[concat(variables('factoryId'), '/datasets/DelimitedText2')]"
+				"[concat(variables('factoryId'), '/datasets/nikhilgen2nikhilgen2filesysteminput')]",
+				"[concat(variables('factoryId'), '/datasets/nikhilcoolblob')]"
 			]
 		},
 		{
@@ -450,6 +493,10 @@
 						}
 					}
 				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
 				"parameters": {
 					"class": {
 						"type": "string"
@@ -1018,6 +1065,72 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/nikhilcoolblob')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "nikhilcoolblob",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "directory",
+						"container": "demo"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/nikhilcoolblob')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/nikhilgen2nikhilgen2filesysteminput')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "nikhilgen2",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "test.xlsx",
+						"folderPath": "Input",
+						"fileSystem": "nikhilgen2filesystem"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/nikhilgen2')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/thirdcontainer')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -1051,7 +1164,8 @@
 				"annotations": [],
 				"type": "AzureBlobStorage",
 				"typeProperties": {
-					"connectionString": "[parameters('AzureBlobStorage1_connectionString')]"
+					"serviceEndpoint": "[parameters('AzureBlobStorage1_properties_typeProperties_serviceEndpoint')]",
+					"accountKind": "StorageV2"
 				}
 			},
 			"dependsOn": []
@@ -1082,6 +1196,19 @@
 						"type": "SecureString",
 						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
 					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDataLakeStorage2')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('AzureDataLakeStorage2_properties_typeProperties_url')]"
 				}
 			},
 			"dependsOn": []
@@ -1176,6 +1303,19 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/coolblobstorage')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('coolblobstorage_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/linkedService1')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -1188,6 +1328,36 @@
 					"password": {
 						"type": "SecureString",
 						"value": "[parameters('linkedService1_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/nikhilcoolblob')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('nikhilcoolblob_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/nikhilgen2')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('nikhilgen2_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('nikhilgen2_accountKey')]"
 					}
 				}
 			},
@@ -1334,6 +1504,48 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/SSISIRdemo1')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "Managed",
+				"typeProperties": {
+					"computeProperties": {
+						"location": "Central India",
+						"nodeSize": "Standard_D8_v3",
+						"numberOfNodes": 1,
+						"maxParallelExecutionsPerNode": 8
+					},
+					"ssisProperties": {
+						"edition": "Standard",
+						"licenseType": "LicenseIncluded",
+						"packageStores": [
+							{
+								"name": "packagestore2",
+								"packageStoreLinkedService": {
+									"referenceName": "linkedService1",
+									"type": "LinkedServiceReference"
+								}
+							}
+						]
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/linkedService1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/TempSHIR')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/integrationRuntime1')]",
 			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
 			"apiVersion": "2018-06-01",
@@ -1372,7 +1584,35 @@
 				}
 			},
 			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/SHIR')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]",
 				"[concat(variables('factoryId'), '/linkedServices/linkedService1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/integrationRuntime2')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "Managed",
+				"typeProperties": {
+					"computeProperties": {
+						"location": "Central India",
+						"dataFlowProperties": {
+							"computeType": "General",
+							"coreCount": 8,
+							"timeToLive": 10,
+							"cleanup": false
+						}
+					}
+				},
+				"managedVirtualNetwork": {
+					"type": "ManagedVirtualNetworkReference",
+					"referenceName": "default"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
 			]
 		},
 		{
