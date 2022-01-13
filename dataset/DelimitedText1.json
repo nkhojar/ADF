@@ -5,6 +5,16 @@
 			"referenceName": "secondstorage",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"FolderPath": {
+				"type": "string",
+				"defaultValue": "\"kantar/archive\""
+			},
+			"FileName": {
+				"type": "string",
+				"defaultValue": "\"*.CSV\""
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
