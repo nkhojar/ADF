@@ -16,11 +16,11 @@
 				"userProperties": [
 					{
 						"name": "FolderPath",
-						"value": "kantar/archive"
+						"value": "\"kantar/archive\""
 					},
 					{
 						"name": "FileName",
-						"value": "*.CSV"
+						"value": "\"*.CSV\""
 					}
 				],
 				"typeProperties": {
@@ -29,7 +29,7 @@
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"itemName"
+						"childItems"
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
@@ -41,6 +41,12 @@
 				}
 			}
 		],
+		"parameters": {
+			"FolderPath": {
+				"type": "String",
+				"defaultValue": "kantar/archive"
+			}
+		},
 		"annotations": [],
 		"lastPublishTime": "2021-07-07T05:32:54Z"
 	},
