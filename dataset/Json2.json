@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": "sample3.json",
-				"folderPath": "resourceId=/169FC9C1-810C-4F26-BBC4-D607F85E3E15/AZ-AS-RGMICROSOFT.INSIGHTS/ESSUAT-SRCHANALYTICS-WSAPPINSIGHTS/y=2022/m=02/d=15/h=06/m=00",
+				"folderPath": "resourceId=",
 				"container": "insights-logs-appevents"
 			}
 		},
