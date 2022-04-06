@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "sample3.json",
+				"folderPath": "Input",
 				"fileSystem": "nikhilgen2filesystem"
 			},
 			"columnDelimiter": ",",
