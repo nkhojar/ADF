@@ -21,7 +21,7 @@
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
 							"wildcardFolderPath": "input",
-							"wildcardFileName": ".xlsx",
+							"wildcardFileName": "*.xlsx",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -31,7 +31,8 @@
 					"sink": {
 						"type": "ParquetSink",
 						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "MergeFiles"
 						},
 						"formatSettings": {
 							"type": "ParquetWriteSettings"

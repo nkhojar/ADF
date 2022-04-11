@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "directory",
 				"container": "demo"
 			},
 			"compressionCodec": "snappy"
