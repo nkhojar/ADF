@@ -22,7 +22,7 @@
 			}
 		],
 		"typeProperties": {
-			"tableName": "dateandtime"
+			"tableName": "movies"
 		}
 	}
 }
